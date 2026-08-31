@@ -60,4 +60,25 @@ public class ContactTest {
         assertEquals("", contact.getPhone());
         assertEquals(" - ", contact.toString());
     }
+    
+    @Test
+    public void testContactsWithSameNameAreIndependent() {
+        Contact contact1 = new Contact("John", "111-1111");
+        Contact contact2 = new Contact("John", "222-2222");
+        
+        assertEquals("111-1111", contact1.getPhone());
+        assertEquals("222-2222", contact2.getPhone());
+        assertNotEquals(contact1.getPhone(), contact2.getPhone());
+    }
+    
+    @Test
+    public void testContactMultipleComparisons() {
+        Contact contactA = new Contact("Adam", "111-1111");
+        Contact contactB = new Contact("Bob", "222-2222");
+        Contact contactC = new Contact("Adam", "333-3333");
+        
+        assertTrue(contactA.compareTo(contactB) < 0);
+        assertTrue(contactB.compareTo(contactA) > 0);
+        assertEquals(0, contactA.compareTo(contactC));
+    }
 }

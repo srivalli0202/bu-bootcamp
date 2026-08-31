@@ -53,4 +53,18 @@ public class GradeAnalyzerTest {
         double result = GradeAnalyzer.calculateAverage(scores);
         assertEquals(50.0, result, 0.01);
     }
+    
+    @Test
+    public void testCalculateAverageWithTenScores() {
+        ArrayList<Integer> scores = new ArrayList<>(Arrays.asList(95, 87, 92, 88, 91, 85, 89, 93, 90, 86));
+        double result = GradeAnalyzer.calculateAverage(scores);
+        assertEquals(89.6, result, 0.01);
+    }
+    
+    @Test
+    public void testCalculateAverageWithDecimalResult() {
+        ArrayList<Integer> scores = new ArrayList<>(Arrays.asList(85, 90, 92));
+        double result = GradeAnalyzer.calculateAverage(scores);
+        assertEquals(89.0, result, 0.01);
+    }
 }
